@@ -1,3 +1,5 @@
+#include "arte-yu.dtsi"
+
  / {
     chosen {
         zmk,kscan = &kscan0;
