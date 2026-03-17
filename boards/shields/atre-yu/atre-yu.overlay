@@ -1,16 +1,7 @@
 #include "atre-yu.dtsi"
 
- / {
-    chosen {
-        zmk,kscan = &kscan0;
-    };
 
-    kscan0: kscan_0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
-        diode-direction = "col2row";
-        wakeup-source;
-
+  &kscan_0 {
         col-gpios
             = <&pro_micro  1 GPIO_ACTIVE_HIGH>
             , <&pro_micro  0 GPIO_ACTIVE_HIGH>
