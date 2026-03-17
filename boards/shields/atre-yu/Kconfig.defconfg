@@ -1,0 +1,6 @@
+if SHIELD_ATRE-YU
+
+config ZMK_KEYBOARD_NAME
+    default "Atre-yu"
+
+endif
