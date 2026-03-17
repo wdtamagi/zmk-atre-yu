@@ -1,4 +1,4 @@
-#include "arte-yu.dtsi"
+#include "atre-yu.dtsi"
 
  / {
     chosen {
