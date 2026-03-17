@@ -1,4 +1,4 @@
-if SHIELD_ATRE-YU
+if SHIELD_ATRE_YU
 
 config ZMK_KEYBOARD_NAME
     default "Atre-yu"
