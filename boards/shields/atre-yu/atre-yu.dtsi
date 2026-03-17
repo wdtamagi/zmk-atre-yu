@@ -1,11 +1,11 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
-
-        /* Ensure the matrix transform below is exported as the default transform */
         zmk,matrix-transform = &default_transform;
+        zmk,physical-layout = &atre_yu_physical_layout;
     };
 
     default_transform: keymap_transform_0 {
@@ -22,46 +22,86 @@ RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)  RC(8,0) RC(8,1) RC(8,2) RC(8,3)
     };
 
     /*
-     * Physical layout in millimeters.
-     * Assumptions:
-     * - 1U spacing = 19.05mm
-     * - 12 keys wide (6 left + 6 right) for the 4 main rows
-     * - thumb row is 8 keys in a line (4 left + 4 right)
-     *
-     * You can later tweak x/y values for stagger/angle while keeping the same ordering.
+     * Physical layout using ZMK's key_physical_attrs format.
+     * Units are in 1/100 of 1U (where 1U = 19.05mm).
+     * 6 columns left + 6 columns right, 4 main rows + 1 thumb row.
+     * A 1U gap separates the two halves (left cols at x=0..500, right at x=700..1200).
+     * Thumb row (y=420) is positioned ~4.2U below the top.
      */
     atre_yu_physical_layout: atre_yu_physical_layout {
         compatible = "zmk,physical-layout";
         display-name = "Atre-yu";
 
-        /* tie layout to the transform */
         transform = <&default_transform>;
 
-        keys = <
-            /* Main grid: 12 columns x 4 rows */
-            /* row 0 */
-            0 0   0.00   0.00   1 0  19.05   0.00   2 0  38.10   0.00   3 0  57.15   0.00   4 0  76.20   0.00   5 0  95.25   0.00
-            6 0 133.35   0.00   7 0 152.40   0.00   8 0 171.45   0.00   9 0 190.50   0.00  10 0 209.55   0.00  11 0 228.60   0.00
-
-            /* row 1 */
-            0 1   0.00  19.05   1 1  19.05  19.05   2 1  38.10  19.05   3 1  57.15  19.05   4 1  76.20  19.05   5 1  95.25  19.05
-            6 1 133.35  19.05   7 1 152.40  19.05   8 1 171.45  19.05   9 1 190.50  19.05  10 1 209.55  19.05  11 1 228.60  19.05
-
-            /* row 2 */
-            0 2   0.00  38.10   1 2  19.05  38.10   2 2  38.10  38.10   3 2  57.15  38.10   4 2  76.20  38.10   5 2  95.25  38.10
-            6 2 133.35  38.10   7 2 152.40  38.10   8 2 171.45  38.10   9 2 190.50  38.10  10 2 209.55  38.10  11 2 228.60  38.10
-
-            /* row 3 */
-            0 3   0.00  57.15   1 3  19.05  57.15   2 3  38.10  57.15   3 3  57.15  57.15   4 3  76.20  57.15   5 3  95.25  57.15
-            6 3 133.35  57.15   7 3 152.40  57.15   8 3 171.45  57.15   9 3 190.50  57.15  10 3 209.55  57.15  11 3 228.60  57.15
-
-            /*
-             * Thumb row: 8 keys (4 left + 4 right) in a straight line.
-             * Positioned one "row" below, centered-ish between halves.
-             */
-            0 4  57.15  80.00   1 4  76.20  80.00   2 4  95.25  80.00   3 4 114.30  80.00
-            4 4 133.35  80.00   5 4 152.40  80.00   6 4 171.45  80.00   7 4 190.50  80.00
-        >;
+        keys //                     w   h    x    y   rot  rx  ry
+            /* Row 0, Left */
+            = <&key_physical_attrs 100 100    0   0    0    0   0>
+            , <&key_physical_attrs 100 100  100   0    0    0   0>
+            , <&key_physical_attrs 100 100  200   0    0    0   0>
+            , <&key_physical_attrs 100 100  300   0    0    0   0>
+            , <&key_physical_attrs 100 100  400   0    0    0   0>
+            , <&key_physical_attrs 100 100  500   0    0    0   0>
+            /* Row 0, Right */
+            , <&key_physical_attrs 100 100  700   0    0    0   0>
+            , <&key_physical_attrs 100 100  800   0    0    0   0>
+            , <&key_physical_attrs 100 100  900   0    0    0   0>
+            , <&key_physical_attrs 100 100 1000   0    0    0   0>
+            , <&key_physical_attrs 100 100 1100   0    0    0   0>
+            , <&key_physical_attrs 100 100 1200   0    0    0   0>
+            /* Row 1, Left */
+            , <&key_physical_attrs 100 100    0 100    0    0   0>
+            , <&key_physical_attrs 100 100  100 100    0    0   0>
+            , <&key_physical_attrs 100 100  200 100    0    0   0>
+            , <&key_physical_attrs 100 100  300 100    0    0   0>
+            , <&key_physical_attrs 100 100  400 100    0    0   0>
+            , <&key_physical_attrs 100 100  500 100    0    0   0>
+            /* Row 1, Right */
+            , <&key_physical_attrs 100 100  700 100    0    0   0>
+            , <&key_physical_attrs 100 100  800 100    0    0   0>
+            , <&key_physical_attrs 100 100  900 100    0    0   0>
+            , <&key_physical_attrs 100 100 1000 100    0    0   0>
+            , <&key_physical_attrs 100 100 1100 100    0    0   0>
+            , <&key_physical_attrs 100 100 1200 100    0    0   0>
+            /* Row 2, Left */
+            , <&key_physical_attrs 100 100    0 200    0    0   0>
+            , <&key_physical_attrs 100 100  100 200    0    0   0>
+            , <&key_physical_attrs 100 100  200 200    0    0   0>
+            , <&key_physical_attrs 100 100  300 200    0    0   0>
+            , <&key_physical_attrs 100 100  400 200    0    0   0>
+            , <&key_physical_attrs 100 100  500 200    0    0   0>
+            /* Row 2, Right */
+            , <&key_physical_attrs 100 100  700 200    0    0   0>
+            , <&key_physical_attrs 100 100  800 200    0    0   0>
+            , <&key_physical_attrs 100 100  900 200    0    0   0>
+            , <&key_physical_attrs 100 100 1000 200    0    0   0>
+            , <&key_physical_attrs 100 100 1100 200    0    0   0>
+            , <&key_physical_attrs 100 100 1200 200    0    0   0>
+            /* Row 3, Left */
+            , <&key_physical_attrs 100 100    0 300    0    0   0>
+            , <&key_physical_attrs 100 100  100 300    0    0   0>
+            , <&key_physical_attrs 100 100  200 300    0    0   0>
+            , <&key_physical_attrs 100 100  300 300    0    0   0>
+            , <&key_physical_attrs 100 100  400 300    0    0   0>
+            , <&key_physical_attrs 100 100  500 300    0    0   0>
+            /* Row 3, Right */
+            , <&key_physical_attrs 100 100  700 300    0    0   0>
+            , <&key_physical_attrs 100 100  800 300    0    0   0>
+            , <&key_physical_attrs 100 100  900 300    0    0   0>
+            , <&key_physical_attrs 100 100 1000 300    0    0   0>
+            , <&key_physical_attrs 100 100 1100 300    0    0   0>
+            , <&key_physical_attrs 100 100 1200 300    0    0   0>
+            /* Thumb Row, Left */
+            , <&key_physical_attrs 100 100  300 420    0    0   0>
+            , <&key_physical_attrs 100 100  400 420    0    0   0>
+            , <&key_physical_attrs 100 100  500 420    0    0   0>
+            , <&key_physical_attrs 100 100  600 420    0    0   0>
+            /* Thumb Row, Right */
+            , <&key_physical_attrs 100 100  700 420    0    0   0>
+            , <&key_physical_attrs 100 100  800 420    0    0   0>
+            , <&key_physical_attrs 100 100  900 420    0    0   0>
+            , <&key_physical_attrs 100 100 1000 420    0    0   0>
+            ;
     };
 
     kscan0: kscan {
