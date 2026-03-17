@@ -26,3 +26,15 @@
   debounce-press-ms = <5>;
   debounce-release-ms = <5>;
 };
+
+&left_encoder {
+    status = "okay";
+};
+
+&right_encoder {
+    status = "okay";
+};
+
+&sensors {
+    status = "okay";
+};
