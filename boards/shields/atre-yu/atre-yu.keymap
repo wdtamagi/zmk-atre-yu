@@ -24,7 +24,7 @@
                                       &kp ESC    &kp LCMD   &kp SPACE  &trans        &trans    &kp BSPC   &kp RET    &kp RALT
             >;
 
-            sensor-bindings = <&inc_dec_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
