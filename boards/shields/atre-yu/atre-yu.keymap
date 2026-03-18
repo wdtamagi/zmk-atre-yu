@@ -11,10 +11,15 @@
             #sensor-binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
-        rot_msc: sensor_rotate_msc {
-            compatible = "zmk,behavior-sensor-rotate-var";
-            #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
+        rot_msc_hor: sensor_rotate_msc_hor {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+        };
+        rot_msc_ver: sensor_rotate_msc_ver {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
         };
     };
 
@@ -29,7 +34,7 @@
                                       &kp ESC    &kp LCMD   &kp SPACE  &trans        &trans    &kp BSPC   &kp RET    &kp RALT
             >;
 
-            sensor-bindings = <&rot_msc SCRL_LEFT SCRL_RIGHT &rot_msc SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&rot_msc_hor &rot_msc_ver>;
         };
     };
 };
