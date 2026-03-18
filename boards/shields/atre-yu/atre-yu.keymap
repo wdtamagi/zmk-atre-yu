@@ -23,7 +23,7 @@
                                       &kp ESC    &kp LCMD   &kp SPACE  &trans        &trans    &kp BSPC   &kp RET    &kp RALT
             >;
 
-            sensor-bindings = <&rot_kp PG_UP PG_DN, &rot_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&rot_kp PG_UP PG_DN &rot_kp C_VOL_UP C_VOL_DN>;
         };
     };
 };
