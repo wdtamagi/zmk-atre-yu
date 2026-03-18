@@ -31,10 +31,6 @@
     status = "okay";
 };
 
-&right_encoder {
-    status = "okay";
-};
-
 &sensors {
     status = "okay";
 };
