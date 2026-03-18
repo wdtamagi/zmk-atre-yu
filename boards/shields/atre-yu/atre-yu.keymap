@@ -5,26 +5,25 @@
 
 / {
     behaviors {
-        inc_dec_msc: sensor_rotate_msc {
+        rot_kp: sensor_rotate_kp {
             compatible = "zmk,behavior-sensor-rotate-var";
             #sensor-binding-cells = <2>;
-            bindings = <&msc>, <&msc>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
-
-        default_layer {
+        base {
             bindings = <
                 &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp N4     &kp N5        &kp N6    &kp N7     &kp N8     &kp N9    &kp N0     &kp MINUS
                 &kp TAB    &kp Q      &kp W      &kp E      &kp R      &kp T         &kp Y     &kp U      &kp I      &kp O     &kp P      &kp LBKT
                 &kp CAPS   &kp A      &kp S      &kp D      &kp F      &kp G         &kp H     &kp J      &kp K      &kp L     &kp SEMI   &kp APOS
                 &kp LSHFT  &kp Z      &kp X      &kp C      &kp V      &kp B         &kp N     &kp M      &kp COMMA  &kp DOT   &kp QMARK  &kp FSLH
-                                      &kp ESC    &kp LCMD   &kp SPACE  &kp X         &trans    &kp BSPC   &kp RET    &kp RALT
+                                      &kp ESC    &kp LCMD   &kp SPACE  &trans        &trans    &kp BSPC   &kp RET    &kp RALT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&rot_kp PG_UP PG_DN>;
         };
     };
 };
