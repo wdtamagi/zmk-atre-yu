@@ -10,6 +10,11 @@
             #sensor-binding-cells = <2>;
             bindings = <&kp>, <&kp>;
         };
+        rot_msc: sensor_rotate_msc {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+        };
     };
 
     keymap {
@@ -23,7 +28,7 @@
                                       &kp ESC    &kp LCMD   &kp SPACE  &trans        &trans    &kp BSPC   &kp RET    &kp RALT
             >;
 
-            sensor-bindings = <&rot_kp SCRL_LEFT SCRL_RIGHT &rot_kp SCRL_UP SCRL_DOWN>;
+            sensor-bindings = <&rot_msc SCRL_LEFT SCRL_RIGHT &rot_msc SCRL_UP SCRL_DOWN>;
         };
     };
 };
